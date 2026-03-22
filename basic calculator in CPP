@@ -9,7 +9,8 @@ struct valores{
     float valor2;
 };
 
-void calc(struct valores &calculadora){
+
+void calc(valores &calculadora){
     cout << "Digite um dos valores a seguir:\n(1)adicao, (2)subtracao, (3)multiplicacao e (4)divisao: " << "\n";
     cin >> calculadora.escolha;
     cout << "Digite um numero: " << "\n";
@@ -18,25 +19,31 @@ void calc(struct valores &calculadora){
     cin >> calculadora.valor2;
 }
 
-void adicao(struct valores &calculadora){
+int retorna(valores &calculadora, int decisao){
+    decisao = calculadora.escolha;
+    return decisao;
+    
+}
+
+void adicao(valores &calculadora){
     if (calculadora.escolha == 1) {
         cout << "O resultado da operacao e: "<< calculadora.valor1 + calculadora.valor2;        
     }
 }
 
-void subtracao(struct valores &calculadora){
+void subtracao(valores &calculadora){
     if (calculadora.escolha == 2) {
         cout << "O resultado da operacao e: " << calculadora.valor1 - calculadora.valor2;
     }
 }
 
-void multiplicacao(struct valores &calculadora){
+void multiplicacao(valores &calculadora){
     if (calculadora.escolha == 3) {
         cout << "O resultado da operacao e: " << calculadora.valor1 * calculadora.valor2;
     }
 }
 
-void divisao(struct valores &calculadora){
+void divisao(valores &calculadora){
     if (calculadora.escolha == 4) {
         cout << "O resultado da operacao e: " << calculadora.valor1 / calculadora.valor2;
     }
@@ -44,12 +51,25 @@ void divisao(struct valores &calculadora){
 
 int main() {
     valores calculos;
-
     calc(calculos);
-    adicao(calculos);
-    subtracao(calculos);
-    multiplicacao(calculos);
-    divisao(calculos);
 
+    int decisao_main = retorna(calculos, calculos.escolha);
+
+    if (decisao_main == 1){
+        adicao(calculos);
+    }
+
+    else if(decisao_main){
+        subtracao(calculos);    
+    }
+    
+    else if(decisao_main){
+         multiplicacao(calculos);
+    }
+    
+    else{
+        divisao(calculos);
+    }
+    
     return 0;
 }
