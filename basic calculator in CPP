@@ -1,0 +1,55 @@
+//CALCULADORA COM STRUCT, FUNCTION E REFERÊNCIA
+#include <iostream>
+
+using namespace std;
+
+struct valores{
+    int escolha;
+    float valor1;
+    float valor2;
+};
+
+void calc(struct valores &calculadora){
+    cout << "Digite um dos valores a seguir:\n(1)adicao, (2)subtracao, (3)multiplicacao e (4)divisao: " << "\n";
+    cin >> calculadora.escolha;
+    cout << "Digite um numero: " << "\n";
+    cin >> calculadora.valor1;
+    cout << "Digite outro numero" << "\n";
+    cin >> calculadora.valor2;
+}
+
+void adicao(struct valores &calculadora){
+    if (calculadora.escolha == 1) {
+        cout << "O resultado da operacao e: "<< calculadora.valor1 + calculadora.valor2;        
+    }
+}
+
+void subtracao(struct valores &calculadora){
+    if (calculadora.escolha == 2) {
+        cout << "O resultado da operacao e: " << calculadora.valor1 - calculadora.valor2;
+    }
+}
+
+void multiplicacao(struct valores &calculadora){
+    if (calculadora.escolha == 3) {
+        cout << "O resultado da operacao e: " << calculadora.valor1 * calculadora.valor2;
+    }
+}
+
+void divisao(struct valores &calculadora){
+    if (calculadora.escolha == 4) {
+        cout << "O resultado da operacao e: " << calculadora.valor1 / calculadora.valor2;
+    }
+}
+
+int main() {
+    valores calculos;
+
+    calc(calculos);
+    adicao(calculos);
+    subtracao(calculos);
+    multiplicacao(calculos);
+    divisao(calculos);
+
+    return 0;
+}
